@@ -277,27 +277,26 @@
         display: block !important;
     }
 
-	/* CARICAMENTO DELLE ICONE ORIGINALI DAI SERVER MICROSOFT */
-@font-face {
-    font-family: 'docon';
-    src: url('https://learn.microsoft.com/en-us/assets/fonts/docons.fa58726.e243a562.woff2') format('woff2'),
-         url('https://learn.microsoft.com/en-us/assets/fonts/docons.fa58726.d980bcc8.woff') format('woff'),
-         url('https://learn.microsoft.com/en-us/assets/fonts/docons.fa58726.d8fb64ab.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-    font-display: block;
-}
-
-/* APPLICAZIONE DEL FONT ALLE CLASSI DELLE ICONE */
-.docon {
-    font-family: 'docon' !important;
-}
-
-/* RIMUOVIAMO IL TRIANGOLINO CSS MANUALE CHE ABBIAMO MESSO PRIMA */
-/* Ora che carichiamo le icone originali, usiamo quelle vere del sito! */
-.site-header-button::after {
+/* Nasconde l'icona originale che appare come una 'S' */
+.site-header-button .icon.expanded-indicator,
+.site-header-button .docon-chevron-down-light {
     display: none !important;
 }
+
+/* Opzionale: se vuoi che il triangolino sia più simile all'originale (più piccolo e sottile) */
+.site-header-button::after {
+    content: "";
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid currentColor;
+    display: inline-block;
+    margin-left: 10px; /* Distanza dal testo */
+    vertical-align: middle;
+    opacity: 0.7; /* Lo rende un po' più grigio/morbido */
+}
+		
 </style>
 
 <script>
