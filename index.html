@@ -234,7 +234,7 @@
 	<style>
 
 		
-	
+	<!--
     /* 1. RIPRISTINA I TRIANGOLINI SUI PULSANTI DELLA NAVBAR */
     .site-header-button {
         display: inline-flex !important;
@@ -259,6 +259,41 @@
     .site-header-button[aria-expanded="true"]::after {
         transform: rotate(180deg);
     }
+	-->
+	/* 1. NASCONDI LA 'S' O ALTRE ICONE ROTTE */
+.docon-chevron-down-light, 
+.expanded-indicator,
+.site-header-button span.icon {
+    font-size: 0 !important; /* Sparisce la lettera */
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 12px;
+    height: 12px;
+    position: relative;
+    border: none !important;
+}
+
+/* 2. DISEGNA LA "V" (CHEVRON) CON IL CSS */
+.docon-chevron-down-light::before,
+.site-header-button .expanded-indicator::before {
+    content: "";
+    display: inline-block;
+    width: 6px;  /* Larghezza della V */
+    height: 6px; /* Altezza della V */
+    border-right: 1.5px solid currentColor; /* Spessore del tratto */
+    border-bottom: 1.5px solid currentColor;
+    transform: rotate(45deg); /* Ruota per farla diventare una V */
+    transition: transform 0.2s ease;
+    margin-bottom: 3px; /* Aggiusta la posizione verticale */
+}
+
+/* 3. RUOTA LA "V" QUANDO IL MENU È APERTO */
+[aria-expanded="true"] .docon-chevron-down-light::before,
+[aria-expanded="true"] .expanded-indicator::before {
+    transform: rotate(-135deg); /* Si ribalta verso l'alto */
+    margin-bottom: -3px;
+}
 
     /* 2. STILE PER I PANNELLI (I MENU A CASCATA) */
     .site-header-panel {
@@ -283,6 +318,7 @@
     display: none !important;
 }
 
+<!--
 /* Opzionale: se vuoi che il triangolino sia più simile all'originale (più piccolo e sottile) */
 .site-header-button::after {
     content: "";
@@ -296,6 +332,7 @@
     vertical-align: middle;
     opacity: 0.7; /* Lo rende un po' più grigio/morbido */
 }
+-->
 		
 </style>
 
