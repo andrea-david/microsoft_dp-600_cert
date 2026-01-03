@@ -232,6 +232,9 @@
 
 	<!-- inizio codice aggiunto -->
 	<style>
+
+		
+	
     /* 1. RIPRISTINA I TRIANGOLINI SUI PULSANTI DELLA NAVBAR */
     .site-header-button {
         display: inline-flex !important;
@@ -273,6 +276,28 @@
     .site-header-panel:not([hidden]) {
         display: block !important;
     }
+
+	/* CARICAMENTO DELLE ICONE ORIGINALI DAI SERVER MICROSOFT */
+@font-face {
+    font-family: 'docon';
+    src: url('https://learn.microsoft.com/en-us/assets/fonts/docons.fa58726.e243a562.woff2') format('woff2'),
+         url('https://learn.microsoft.com/en-us/assets/fonts/docons.fa58726.d980bcc8.woff') format('woff'),
+         url('https://learn.microsoft.com/en-us/assets/fonts/docons.fa58726.d8fb64ab.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+/* APPLICAZIONE DEL FONT ALLE CLASSI DELLE ICONE */
+.docon {
+    font-family: 'docon' !important;
+}
+
+/* RIMUOVIAMO IL TRIANGOLINO CSS MANUALE CHE ABBIAMO MESSO PRIMA */
+/* Ora che carichiamo le icone originali, usiamo quelle vere del sito! */
+.site-header-button::after {
+    display: none !important;
+}
 </style>
 
 <script>
