@@ -230,6 +230,93 @@
             background-color: rgba(0, 0, 0, 0.2) !important;
         }</style>
 
+	<\-- inizio codice aggiunto -->
+	<style>
+    /* 1. RIPRISTINA I TRIANGOLINI SUI PULSANTI DELLA NAVBAR */
+    .site-header-button {
+        display: inline-flex !important;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+    }
+
+    /* Crea il triangolino usando i bordi CSS */
+    .site-header-button::after {
+        content: "";
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 5px solid currentColor;
+        display: inline-block;
+        transition: transform 0.2s;
+    }
+
+    /* Ruota il triangolino quando il menu è aperto */
+    .site-header-button[aria-expanded="true"]::after {
+        transform: rotate(180deg);
+    }
+
+    /* 2. STILE PER I PANNELLI (I MENU A CASCATA) */
+    .site-header-panel {
+        position: absolute;
+        background: white !important;
+        border: 1px solid #ddd !important;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1) !important;
+        z-index: 10000 !important;
+        display: none; /* Inizialmente nascosti */
+        width: auto;
+        min-width: 300px;
+    }
+
+    /* Mostra il pannello quando rimuoviamo l'attributo 'hidden' tramite lo script */
+    .site-header-panel:not([hidden]) {
+        display: block !important;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Seleziona tutti i pulsanti Documentation, Training, ecc.
+        const navButtons = document.querySelectorAll('.site-header-button');
+
+        navButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                // Trova il pannello associato (usando l'ID in aria-controls)
+                const panelId = this.getAttribute('aria-controls');
+                const panel = document.getElementById(panelId);
+                
+                // Controlla se è già aperto
+                const isExpanded = this.getAttribute('aria-expanded') === 'true';
+
+                // Chiudi tutti gli altri pannelli aperti per sicurezza
+                document.querySelectorAll('.site-header-button').forEach(btn => {
+                    btn.setAttribute('aria-expanded', 'false');
+                });
+                document.querySelectorAll('.site-header-panel').forEach(p => {
+                    p.setAttribute('hidden', '');
+                });
+
+                // Se non era aperto, aprilo
+                if (!isExpanded) {
+                    this.setAttribute('aria-expanded', 'true');
+                    panel.removeAttribute('hidden');
+                }
+            });
+        });
+
+        // Chiudi i menu se clicchi fuori
+        document.addEventListener('click', function() {
+            document.querySelectorAll('.site-header-button').forEach(btn => btn.setAttribute('aria-expanded', 'false'));
+            document.querySelectorAll('.site-header-panel').forEach(p => p.setAttribute('hidden', ''));
+        });
+    });
+</script>
+	<\-- fine codice aggiunto -->
+
 		</head>
 	
 			<body id="body" data-bi-name="body" class="layout-body " lang="en-us" dir="ltr">
