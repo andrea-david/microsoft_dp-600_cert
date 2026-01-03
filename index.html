@@ -232,25 +232,25 @@
 
 	<!-- inizio codice aggiunto -->
 <style>
-/* 1. RESETTIAMO IL CONTENITORE E ANNULLIAMO ROTAZIONI ESTERNE */
+/* 1. POSIZIONAMENTO DEL CONTENITORE (PIÙ IN BASSO) */
 .docon-chevron-down-light, 
 .expanded-indicator,
-.site-header-button .icon {
+.site-header-button span.icon {
     font-size: 0 !important;
     display: inline-flex !important;
+    /* Allineamento al fondo del contenitore */
     align-items: flex-end !important; 
     justify-content: center;
     position: relative;
     border: none !important;
     visibility: visible !important;
     width: 12px;
-    height: 14px;
-    padding-bottom: 4px;
-    /* ANNULLA LA ROTAZIONE DI MICROSOFT SUL CONTENITORE */
-    transform: none !important; 
+    height: 18px; /* Aumentato per permettere di scendere ancora */
+    padding-bottom: 2px; /* Regola questo valore per i millimetri finali */
+    transform: none !important; /* Blocca rotazioni indesiderate di MS */
 }
 
-/* 2. DISEGNIAMO LA V */
+/* 2. DISEGNO DELLA V */
 .site-header-button .docon-chevron-down-light::before {
     content: "";
     display: inline-block;
@@ -260,21 +260,19 @@
     border-bottom: 1.5px solid currentColor;
     transform: rotate(45deg);
     transition: transform 0.2s ease;
+    /* Un piccolo margine extra per scendere sotto la linea del testo se serve */
+    margin-bottom: 0px; 
 }
 
-/* 3. RUOTIAMO LA V (L'UNICA ROTAZIONE CHE DEVE RIMANERE) */
+/* 3. ROTAZIONE QUANDO APERTO (Blocca l'effetto ritorno) */
 .site-header-button[aria-expanded="true"] .docon-chevron-down-light::before {
     transform: rotate(-135deg) !important;
-    margin-bottom: 2px;
+    margin-bottom: 4px; /* Compensa lo spostamento durante la rotazione */
 }
 
-/* 4. DISABILITA DOPPIONI E ALTRE ROTAZIONI SU ELEMENTI PADRE */
-.expanded-indicator::before,
-.expanded-indicator::after {
-    content: none !important;
-}
+/* 4. PULIZIA E BLOCCO DOPPIONI/ROTAZIONI ESTERNE */
+.expanded-indicator::before, .expanded-indicator::after { content: none !important; }
 
-/* Impedisce a qualsiasi span interno di ruotare per colpa del CSS originale */
 .site-header-button[aria-expanded="true"] .icon,
 .site-header-button[aria-expanded="true"] .expanded-indicator {
     transform: none !important;
@@ -297,7 +295,7 @@
     display: block !important;
 }
 </style>
-
+	
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         // Seleziona tutti i pulsanti Documentation, Training, ecc.
