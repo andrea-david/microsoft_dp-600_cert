@@ -234,32 +234,7 @@
 	<style>
 
 		
-	<!--
-    /* 1. RIPRISTINA I TRIANGOLINI SUI PULSANTI DELLA NAVBAR */
-    .site-header-button {
-        display: inline-flex !important;
-        align-items: center;
-        gap: 8px;
-        cursor: pointer;
-    }
 
-    /* Crea il triangolino usando i bordi CSS */
-    .site-header-button::after {
-        content: "";
-        width: 0;
-        height: 0;
-        border-left: 5px solid transparent;
-        border-right: 5px solid transparent;
-        border-top: 5px solid currentColor;
-        display: inline-block;
-        transition: transform 0.2s;
-    }
-
-    /* Ruota il triangolino quando il menu è aperto */
-    .site-header-button[aria-expanded="true"]::after {
-        transform: rotate(180deg);
-    }
-	-->
 	/* 1. NASCONDI LA 'S' O ALTRE ICONE ROTTE */
 .docon-chevron-down-light, 
 .expanded-indicator,
@@ -318,21 +293,6 @@
     display: none !important;
 }
 
-<!--
-/* Opzionale: se vuoi che il triangolino sia più simile all'originale (più piccolo e sottile) */
-.site-header-button::after {
-    content: "";
-    width: 0;
-    height: 0;
-    border-left: 4px solid transparent;
-    border-right: 4px solid transparent;
-    border-top: 4px solid currentColor;
-    display: inline-block;
-    margin-left: 10px; /* Distanza dal testo */
-    vertical-align: middle;
-    opacity: 0.7; /* Lo rende un po' più grigio/morbido */
-}
--->
 		
 </style>
 
