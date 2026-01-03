@@ -231,25 +231,23 @@
         }</style>
 
 	<!-- inizio codice aggiunto -->
-	<style>
-
-		
-
-	/* 1. NASCONDI LA 'S' O ALTRE ICONE ROTTE */
+<style>
+/* 1. PREPARAZIONE DEL CONTENITORE DELL'ICONA */
 .docon-chevron-down-light, 
 .expanded-indicator,
 .site-header-button span.icon {
-    font-size: 0 !important; /* Sparisce la lettera */
-    display: inline-flex !important;
+    font-size: 0 !important; /* Nasconde la lettera 'S' */
+    display: inline-flex !important; /* Fondamentale per vedere la V */
     align-items: center;
     justify-content: center;
     width: 12px;
     height: 12px;
     position: relative;
     border: none !important;
+    visibility: visible !important; /* Forza la visibilità */
 }
 
-/* 2. DISEGNA LA "V" (CHEVRON) CON IL CSS */
+/* 2. DISEGNA LA "V" (CHEVRON) */
 .docon-chevron-down-light::before,
 .site-header-button .expanded-indicator::before {
     content: "";
@@ -258,42 +256,35 @@
     height: 6px; /* Altezza della V */
     border-right: 1.5px solid currentColor; /* Spessore del tratto */
     border-bottom: 1.5px solid currentColor;
-    transform: rotate(45deg); /* Ruota per farla diventare una V */
+    transform: rotate(45deg); /* La inclina per farla sembrare una V */
     transition: transform 0.2s ease;
-    margin-bottom: 3px; /* Aggiusta la posizione verticale */
+    margin-bottom: 3px; 
 }
 
 /* 3. RUOTA LA "V" QUANDO IL MENU È APERTO */
-[aria-expanded="true"] .docon-chevron-down-light::before,
-[aria-expanded="true"] .expanded-indicator::before {
+/* Nota: usiamo il selettore del pulsante che ha l'attributo aria-expanded */
+.site-header-button[aria-expanded="true"] .docon-chevron-down-light::before,
+.site-header-button[aria-expanded="true"] .expanded-indicator::before {
     transform: rotate(-135deg); /* Si ribalta verso l'alto */
     margin-bottom: -3px;
 }
 
-    /* 2. STILE PER I PANNELLI (I MENU A CASCATA) */
-    .site-header-panel {
-        position: absolute;
-        background: white !important;
-        border: 1px solid #ddd !important;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.1) !important;
-        z-index: 10000 !important;
-        display: none; /* Inizialmente nascosti */
-        width: auto;
-        min-width: 300px;
-    }
-
-    /* Mostra il pannello quando rimuoviamo l'attributo 'hidden' tramite lo script */
-    .site-header-panel:not([hidden]) {
-        display: block !important;
-    }
-
-/* Nasconde l'icona originale che appare come una 'S' */
-.site-header-button .icon.expanded-indicator,
-.site-header-button .docon-chevron-down-light {
-    display: none !important;
+/* 4. STILE PER I PANNELLI (I MENU A CASCATA) */
+.site-header-panel {
+    position: absolute;
+    background: white !important;
+    border: 1px solid #ddd !important;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1) !important;
+    z-index: 10000 !important;
+    display: none; 
+    width: auto;
+    min-width: 300px;
 }
 
-		
+/* Mostra il pannello quando lo script toglie 'hidden' */
+.site-header-panel:not([hidden]) {
+    display: block !important;
+}
 </style>
 
 <script>
