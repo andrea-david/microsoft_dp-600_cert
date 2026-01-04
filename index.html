@@ -358,26 +358,34 @@
 <!-- fine lente ingrandimento -->
 
 <!-- inizio icona segno di spunta verde -->
-/* 1. TRASFORMIAMO SOLO LO SPAN DELL'ICONA IN UN QUADRATINO VERDE */
-.badge .docon-check {
-    font-size: 0 !important;      /* Nasconde il quadratino del font rotto */
-    display: inline-block !important;
-    width: 10px !important;       /* Larghezza della spunta */
-    height: 5px !important;        /* Altezza della spunta */
-    border-left: 2px solid #28a745 !important;
-    border-bottom: 2px solid #28a745 !important;
-    transform: rotate(-45deg) !important;
-    position: relative !important;
-    top: -3px !important;         /* Allineamento verticale rispetto al testo */
-    margin-right: 8px !important; /* Spazio tra spunta e scritta */
-    vertical-align: middle !important;
+/* 1. SELETTORE MIRATO: Colpisce solo il badge che contiene la spunta della verifica */
+.badge:has(.docon-check) {
+    background-color: #dff6ff !important; /* Azzurro sfondo */
+    color: #005fb8 !important;           /* Blu testo */
+    border: 1px solid #005fb8 !important; /* Bordo blu */
+    display: inline-flex !important;
+    align-items: center !important;
+    padding: 2px 8px !important;
+    font-weight: 600 !important;
+    border-radius: 4px !important;
 }
 
-/* 2. ASSICURIAMOCI CHE IL TESTO SIA VISIBILE */
-.badge {
-    color: blue !important; /* Forza il colore del testo se necessario */
-    font-size: 0.75rem !important; /* Assicura che la dimensione del testo sia corretta */
+/* 2. LA SPUNTA ALL'INTERNO DI QUEL BADGE SPECIFICO */
+.badge:has(.docon-check) .docon-check {
+    font-size: 0 !important;
+    display: inline-block !important;
+    width: 10px !important;
+    height: 5px !important;
+    border-left: 2px solid #005fb8 !important; 
+    border-bottom: 2px solid #005fb8 !important;
+    transform: rotate(-45deg) !important;
+    position: relative !important;
+    top: -3px !important;
+    margin-right: 8px !important;
+    visibility: visible !important;
 }
+
+
 <!-- fine icona segno di spunta verde -->
 	
 </style>
