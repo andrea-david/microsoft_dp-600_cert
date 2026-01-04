@@ -387,6 +387,56 @@
 
 
 <!-- fine icona segno di spunta verde -->
+
+<!-- inizio globo selettore lingua -->
+	/* 1. RESET DELL'ICONA MONDO NEL FOOTER */
+.locale-selector-link .docon-world {
+    font-size: 0 !important; /* Uccide il quadratino */
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 16px !important;
+    height: 16px !important;
+    position: relative !important;
+    visibility: visible !important;
+    vertical-align: middle !important;
+    color: currentColor !important; /* Segue il colore del testo (grigio o nero) */
+}
+
+/* 2. DISEGNO DEL GLOBO (CERCHIO ESTERNO) */
+.locale-selector-link .docon-world::before {
+    content: "" !important;
+    position: absolute !important;
+    width: 14px;
+    height: 14px;
+    border: 1.2px solid currentColor;
+    border-radius: 50%;
+    top: 1px;
+    left: 1px;
+    box-sizing: border-box;
+}
+
+/* 3. MERIDIANO CENTRALE (EFFETTO 3D) */
+.locale-selector-link .docon-world::after {
+    content: "" !important;
+    position: absolute !important;
+    width: 5px;
+    height: 14px;
+    border-left: 1px solid currentColor;
+    border-right: 1px solid currentColor;
+    border-radius: 50%; /* Crea l'ellisse interna */
+    left: 5.5px;
+    top: 1px;
+    box-sizing: border-box;
+}
+
+/* 4. LINEA EQUATORIALE (OPZIONALE PER REALISMO) */
+.locale-selector-link .icon {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+<!-- fine globo selettore lingua -->
 	
 </style>
 	
