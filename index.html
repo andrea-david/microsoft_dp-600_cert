@@ -389,28 +389,27 @@
 <!-- fine icona segno di spunta verde -->
 
 <!-- inizio globo selettore lingua -->
-/* 1. RESET E DIMENSIONI DELL'ICONA MONDO */
+/* RESET E POSIZIONAMENTO */
 .locale-selector-link .docon-world {
     font-size: 0 !important;
     display: inline-block !important;
-    width: 18px !important;  /* Dimensione ottimale */
+    width: 18px !important; 
     height: 18px !important;
     vertical-align: middle !important;
     margin-right: 8px !important;
-    background-color: currentColor; /* Permette all'icona di cambiare colore col testo */
     
-    /* 2. CARICAMENTO DELL'ICONA "SOLID" TRAMITE MASCHERA */
-    /* Questo SVG riproduce esattamente il mappamondo con i continenti dell'immagine */
-    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z'/%3E%3C/svg%3E");
-    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z'/%3E%3C/svg%3E");
+    /* CARICAMENTO DIRETTO DELL'IMMAGINE */
+    /* Questo è un SVG codificato che rappresenta esattamente il mondo dell'immagine che hai inviato */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23666666'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z'/%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-size: contain !important;
+    background-position: center !important;
     
-    -webkit-mask-repeat: no-repeat;
-    mask-repeat: no-repeat;
-    -webkit-mask-size: contain;
-    mask-size: contain;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
-/* Rimuoviamo i disegni precedenti se li avevi inseriti */
+/* Rimuove eventuali interferenze */
 .locale-selector-link .docon-world::before,
 .locale-selector-link .docon-world::after {
     display: none !important;
