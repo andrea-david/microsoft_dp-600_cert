@@ -298,50 +298,62 @@
 }
 
 <!--lente ingrandimento -->
-/* 1. SELETTORE ULTRA-SPECIFICO PER UCCIDERE IL QUADRATINO */
-button[data-test-id="site-header-search-open-tablet"] .icon,
-button[data-test-id="site-header-search-open-tablet"] .icon .docon-search {
-    font-size: 0 !important;
-    line-height: 0 !important;
-    text-indent: -9999px !important; /* Sposta il quadratino fuori dallo schermo */
+/* 1. RESET DELLA LENTE ORIGINALE */
+[data-test-id="site-header-search-open-tablet"] .icon {
+    font-size: 0 !important; /* Toglie il quadratino */
+    width: 24px !important;
+    height: 24px !important;
     display: inline-flex !important;
     align-items: center;
     justify-content: center;
-    width: 24px !important;
-    height: 24px !important;
     position: relative !important;
     visibility: visible !important;
-    color: currentColor !important;
 }
 
 /* 2. DISEGNO DELLA LENTE (CERCHIO) */
-button[data-test-id="site-header-search-open-tablet"] .icon::before {
-    content: "" !important;
-    position: absolute !important;
-    width: 14px !important;
-    height: 14px !important;
-    border: 2px solid currentColor !important;
-    border-radius: 50% !important;
-    top: 2px !important;
-    left: 2px !important;
-    box-sizing: border-box !important;
-    text-indent: 0 !important; /* Riporta il disegno in posizione */
+[data-test-id="site-header-search-open-tablet"] .icon::before {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    /* Posizionamento centrale */
+    top: 2px;
+    left: 2px;
+    box-sizing: border-box;
 }
 
 /* 3. DISEGNO DELLA LENTE (MANICO) */
-button[data-test-id="site-header-search-open-tablet"] .icon::after {
-    content: "" !important;
-    position: absolute !important;
-    width: 7px !important;
-    height: 2px !important;
-    background-color: currentColor !important;
-    bottom: 4px !important;
-    right: 2px !important;
-    transform: rotate(45deg) !important;
-    box-sizing: border-box !important;
-    text-indent: 0 !important;
+[data-test-id="site-header-search-open-tablet"] .icon::after {
+    content: "";
+    position: absolute;
+    width: 7px;
+    height: 2px;
+    background-color: currentColor;
+    /* Il manico deve partire dal bordo del cerchio */
+    bottom: 5px;
+    right: 3px;
+    transform: rotate(45deg);
+    transform-origin: left; /* Assicura che ruoti attaccato al cerchio */
 }
 
+/* 4. LOGICA PER LA BARRA DI RICERCA */
+#ms--site-header-search-form-tablet {
+    display: none; /* Di base è chiusa */
+}
+
+#ms--site-header-search-form-tablet:not([hidden]) {
+    display: flex !important;
+    position: absolute;
+    right: 60px;
+    top: 8px;
+    background: white;
+    z-index: 1000;
+    border: 1px solid #ccc;
+    padding: 5px;
+    border-radius: 4px;
+}
 <!-- fine lente ingrandimento -->
 	
 </style>
@@ -387,23 +399,23 @@ button[data-test-id="site-header-search-open-tablet"] .icon::after {
     });
 
 	// Gestione apertura barra di ricerca
-	// Cerca il bottone specifico nel tuo HTML
-	const searchBtn = document.querySelector('button[data-test-id="site-header-search-open-tablet"]');
-	const searchBar = document.getElementById('ms--site-header-search-form-tablet');
+	document.addEventListener('DOMContentLoaded', function() {
+	    const searchBtn = document.querySelector('[data-test-id="site-header-search-open-tablet"]');
+	    const searchForm = document.getElementById('ms--site-header-search-form-tablet');
 	
-	if (searchBtn && searchBar) {
-	    searchBtn.addEventListener('click', function(e) {
-	        e.preventDefault();
-	        // Rimuove l'attributo hidden se c'è, altrimenti lo mette
-	        if (searchBar.hasAttribute('hidden')) {
-	            searchBar.removeAttribute('hidden');
-	            searchBar.style.display = 'flex'; // Forza il display
-	        } else {
-	            searchBar.setAttribute('hidden', '');
-	            searchBar.style.display = 'none';
-	        }
-	    });
-	}
+	    if (searchBtn && searchForm) {
+	        searchBtn.addEventListener('click', function(e) {
+	            e.preventDefault();
+	            e.stopPropagation();
+	            
+	            if (searchForm.hasAttribute('hidden')) {
+	                searchForm.removeAttribute('hidden');
+	            } else {
+	                searchForm.setAttribute('hidden', '');
+	            }
+	        });
+	    }
+	});
 	
 }
 	
