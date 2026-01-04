@@ -298,7 +298,61 @@
 }
 
 <!--lente ingrandimento -->
+/* DISEGNO LENTE DI INGRANDIMENTO (SEARCH) */
+.docon-search, 
+[data-test-id="site-header-search-open-tablet"] .icon {
+    font-size: 0 !important;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    position: relative;
+    visibility: visible !important;
+    cursor: pointer;
+    margin-right: 10px; /* Distanza dall'icona profilo AD */
+}
 
+/* Cerchio della lente */
+.docon-search::before {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+}
+
+/* Manico della lente */
+.docon-search::after {
+    content: "";
+    position: absolute;
+    width: 6px;
+    height: 2px;
+    background-color: currentColor;
+    bottom: 6px;
+    right: 0px;
+    transform: rotate(45deg);
+}
+
+/* STILE PER LA BARRA DI RICERCA QUANDO SI APRE */
+#ms--site-header-search-form-tablet[hidden] {
+    display: none !important;
+}
+
+#ms--site-header-search-form-tablet:not([hidden]) {
+    display: flex !important;
+    position: absolute;
+    right: 50px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: white;
+    border: 1px solid #ccc;
+    padding: 5px;
+    z-index: 100;
+}
 <!-- fine lente ingrandimento -->
 	
 </style>
@@ -343,8 +397,25 @@
         });
     });
 
-	// Gestione apertura barra di ricerca
-
+	// Inizio lente di ingrandimento Gestione apertura barra di ricerca
+	const searchButton = document.querySelector('[data-test-id="site-header-search-open-tablet"]');
+	const searchForm = document.getElementById('ms--site-header-search-form-tablet');
+	
+	if (searchButton && searchForm) {
+		searchButton.addEventListener('click', function(e) {
+			e.preventDefault();
+			e.stopPropagation();
+			
+			// Toggle della visibilità (toglie o mette l'attributo hidden)
+			if (searchForm.hasAttribute('hidden')) {
+				searchForm.removeAttribute('hidden');
+				searchForm.querySelector('input')?.focus();
+			} else {
+				searchForm.setAttribute('hidden', '');
+			}
+		});
+	}
+	// Fine lente di ingrandimento Gestione apertura barra di ricerca
 
 	
 </script>
