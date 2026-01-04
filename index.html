@@ -358,33 +358,31 @@
 <!-- fine lente ingrandimento -->
 
 <!-- inizio icona segno di spunta verde -->
-/* 1. RESET DELL'ICONA CHE NON APPARE */
-.docon-check-mark {
-    font-size: 0 !important; /* Nasconde il quadratino vuoto */
+/* 1. SELETTORE SPECIFICO PER LA TUA SPUNTA */
+.badge .docon-check {
+    font-size: 0 !important;      /* Uccide il quadratino del font rotto */
     display: inline-flex !important;
     align-items: center;
     justify-content: center;
-    width: 18px !important;
-    height: 18px !important;
+    width: 14px !important;       /* Dimensione contenitore */
+    height: 14px !important;
     position: relative !important;
     visibility: visible !important;
-    vertical-align: middle;
-    margin-right: 6px;
+    margin-right: 4px !important; /* Spazio dal testo "Online Verifiable" */
+    vertical-align: middle !important;
 }
 
-/* 2. DISEGNO DEL SEGNO DI SPUNTA (VERDE) */
-.docon-check-mark::before {
+/* 2. DISEGNO DELLA SPUNTA VERDE */
+.badge .docon-check::before {
     content: "" !important;
-    position: absolute;
-    /* Disegniamo una "L" e la ruotiamo */
-    width: 10px;
-    height: 5px;
-    border-left: 2px solid #28a745; /* Verde Microsoft */
+    position: absolute !important;
+    width: 9px;                   /* Larghezza della spunta */
+    height: 5px;                  /* Altezza della spunta */
+    border-left: 2px solid #28a745; /* Colore verde */
     border-bottom: 2px solid #28a745;
-    transform: rotate(-45deg);
-    /* Posizionamento millimetrico */
-    top: 5px;
-    left: 3px;
+    transform: rotate(-45deg);    /* La inclina per farla sembrare una spunta */
+    top: 3px;                     /* Posizionamento verticale */
+    left: 2px;                    /* Posizionamento orizzontale */
 }
 <!-- fine icona segno di spunta verde -->
 	
