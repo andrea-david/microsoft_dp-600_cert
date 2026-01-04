@@ -358,31 +358,36 @@
 <!-- fine lente ingrandimento -->
 
 <!-- inizio icona segno di spunta verde -->
-/* 1. SELETTORE SPECIFICO PER LA TUA SPUNTA */
+/* 1. CONTENITORE: Forza le dimensioni e la visibilità */
 .badge .docon-check {
-    font-size: 0 !important;      /* Uccide il quadratino del font rotto */
-    display: inline-flex !important;
-    align-items: center;
-    justify-content: center;
-    width: 14px !important;       /* Dimensione contenitore */
-    height: 14px !important;
+    font-size: 0 !important;
+    display: inline-block !important; /* Cambiato da inline-flex per maggiore compatibilità */
+    width: 12px !important;
+    height: 12px !important;
     position: relative !important;
     visibility: visible !important;
-    margin-right: 4px !important; /* Spazio dal testo "Online Verifiable" */
     vertical-align: middle !important;
+    margin-right: 5px !important;
+    background: transparent !important; /* Assicura che non ci sia uno sfondo che copre */
 }
 
-/* 2. DISEGNO DELLA SPUNTA VERDE */
+/* 2. DISEGNO DELLA SPUNTA: Usiamo bordi bianchi o verdi */
 .badge .docon-check::before {
     content: "" !important;
     position: absolute !important;
-    width: 9px;                   /* Larghezza della spunta */
-    height: 5px;                  /* Altezza della spunta */
-    border-left: 2px solid #28a745; /* Colore verde */
-    border-bottom: 2px solid #28a745;
-    transform: rotate(-45deg);    /* La inclina per farla sembrare una spunta */
-    top: 7px;                     /* Posizionamento verticale */
-    left: 7px;                    /* Posizionamento orizzontale */
+    display: block !important;
+    width: 8px !important;      /* Un po' più piccolo per stare dentro */
+    height: 4px !important;
+    border-left: 2px solid #ffffff !important; /* Prova BIANCO se il badge è blu, o #28a745 se vuoi verde */
+    border-bottom: 2px solid #ffffff !important;
+    transform: rotate(-45deg) !important;
+    
+    /* Centratura manuale */
+    top: 3px !important;
+    left: 2px !important;
+    
+    opacity: 1 !important;
+    z-index: 10 !important;
 }
 <!-- fine icona segno di spunta verde -->
 	
