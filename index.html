@@ -298,63 +298,48 @@
 }
 
 <!--lente ingrandimento -->
-/* PULIZIA E DISEGNO LENTE DI INGRANDIMENTO */
-[data-test-id="site-header-search-open-tablet"] .icon,
-.docon-search {
-    font-size: 0 !important; /* Uccide definitivamente il carattere del font rotto */
+/* 1. SELETTORE ULTRA-SPECIFICO PER UCCIDERE IL QUADRATINO */
+button[data-test-id="site-header-search-open-tablet"] .icon,
+button[data-test-id="site-header-search-open-tablet"] .icon .docon-search {
+    font-size: 0 !important;
+    line-height: 0 !important;
+    text-indent: -9999px !important; /* Sposta il quadratino fuori dallo schermo */
     display: inline-flex !important;
     align-items: center;
     justify-content: center;
-    width: 24px;
-    height: 24px;
-    position: relative;
+    width: 24px !important;
+    height: 24px !important;
+    position: relative !important;
     visibility: visible !important;
-    color: currentColor; /* Prende il colore del testo del sito */
+    color: currentColor !important;
 }
 
-/* Il cerchio della lente */
-[data-test-id="site-header-search-open-tablet"] .icon::before {
-    content: "";
-    position: absolute;
-    width: 13px;
-    height: 13px;
-    border: 2px solid currentColor;
-    border-radius: 50%;
-    top: 2px;
-    left: 2px;
-    box-sizing: border-box;
+/* 2. DISEGNO DELLA LENTE (CERCHIO) */
+button[data-test-id="site-header-search-open-tablet"] .icon::before {
+    content: "" !important;
+    position: absolute !important;
+    width: 14px !important;
+    height: 14px !important;
+    border: 2px solid currentColor !important;
+    border-radius: 50% !important;
+    top: 2px !important;
+    left: 2px !important;
+    box-sizing: border-box !important;
+    text-indent: 0 !important; /* Riporta il disegno in posizione */
 }
 
-/* Il manico della lente */
-[data-test-id="site-header-search-open-tablet"] .icon::after {
-    content: "";
-    position: absolute;
-    width: 7px;
-    height: 2px;
-    background-color: currentColor;
-    bottom: 5px;
-    right: 3px;
-    transform: rotate(45deg);
-    box-sizing: border-box;
-}
-
-/* Rimuove qualsiasi residuo che potrebbe "spezzare" l'icona */
-[data-test-id="site-header-search-open-tablet"] .icon span {
-    display: none !important;
-}
-
-/* Miglioramento estetico barra di ricerca */
-#ms--site-header-search-form-tablet:not([hidden]) {
-    display: flex !important;
-    position: absolute;
-    right: 60px;
-    top: 10px;
-    background: white;
-    border: 1px solid #0078d4;
-    border-radius: 4px;
-    padding: 4px 10px;
-    z-index: 1000;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+/* 3. DISEGNO DELLA LENTE (MANICO) */
+button[data-test-id="site-header-search-open-tablet"] .icon::after {
+    content: "" !important;
+    position: absolute !important;
+    width: 7px !important;
+    height: 2px !important;
+    background-color: currentColor !important;
+    bottom: 4px !important;
+    right: 2px !important;
+    transform: rotate(45deg) !important;
+    box-sizing: border-box !important;
+    text-indent: 0 !important;
 }
 
 <!-- fine lente ingrandimento -->
@@ -402,22 +387,24 @@
     });
 
 	// Gestione apertura barra di ricerca
-	const searchButton = document.querySelector('[data-test-id="site-header-search-open-tablet"]');
-	const searchForm = document.getElementById('ms--site-header-search-form-tablet');
+	// Cerca il bottone specifico nel tuo HTML
+	const searchBtn = document.querySelector('button[data-test-id="site-header-search-open-tablet"]');
+	const searchBar = document.getElementById('ms--site-header-search-form-tablet');
 	
-	if (searchButton && searchForm) {
-	    searchButton.addEventListener('click', function(e) {
+	if (searchBtn && searchBar) {
+	    searchBtn.addEventListener('click', function(e) {
 	        e.preventDefault();
-	        e.stopPropagation();
-	        
-	        // Toggle della visibilità (toglie o mette l'attributo hidden)
-	        if (searchForm.hasAttribute('hidden')) {
-	            searchForm.removeAttribute('hidden');
-	            searchForm.querySelector('input')?.focus();
+	        // Rimuove l'attributo hidden se c'è, altrimenti lo mette
+	        if (searchBar.hasAttribute('hidden')) {
+	            searchBar.removeAttribute('hidden');
+	            searchBar.style.display = 'flex'; // Forza il display
 	        } else {
-	            searchForm.setAttribute('hidden', '');
+	            searchBar.setAttribute('hidden', '');
+	            searchBar.style.display = 'none';
 	        }
 	    });
+	}
+	
 }
 	
 </script>
