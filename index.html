@@ -453,47 +453,54 @@
 <!-- fine theme -->
 
 <!-- inizio nuovo pezzo per menu heder -->
-/* --- CORREZIONE DEFINITIVA HEADER DUE COLONNE --- */
+/* --- RESET E FORZATURA LAYOUT A DUE COLONNE --- */
 
-/* 1. Forziamo il contenitore principale a diventare Flex */
+/* 1. Forza il contenitore ad essere un Flexbox orizzontale */
 .site-header-panel:not([hidden]) {
     display: flex !important;
     flex-direction: row !important;
-    flex-wrap: nowrap !important; /* Impedisce alle scritte di andare sotto */
+    flex-wrap: nowrap !important; /* Impedisce assolutamente di andare sotto */
     align-items: stretch !important;
-    min-width: 800px !important; /* Aumentiamo un po' la larghezza */
+    min-width: 850px !important; /* Larghezza minima per far stare tutto */
     padding: 0 !important;
+    height: auto !important;
 }
 
-/* 2. Colonna Sinistra (Menu con i link) */
+/* 2. Colonna Sinistra (i link) */
 .site-header-panel-menu {
     flex: 1 1 auto !important;
+    display: block !important; /* La lista interna rimane verticale */
     padding: 24px !important;
     margin: 0 !important;
 }
 
-/* 3. Colonna Destra (Sezione Featured/Promo) */
+/* 3. Colonna Destra (La sezione con le tre voci) */
 .site-header-panel-featured-content {
-    flex: 0 0 300px !important; /* Larghezza fissa per la parte destra */
-    width: 300px !important;
+    flex: 0 0 320px !important; /* Larghezza fissa e bloccata */
+    width: 320px !important;
+    min-width: 320px !important;
     background-color: #f8f8f8 !important; /* Sfondo grigio */
     border-left: 1px solid #e5e5e5 !important; /* LINEA VERTICALE */
-    margin: 0 !important; /* Rimuove margini che potrebbero spingerla sotto */
+    margin: 0 !important;
     padding: 24px !important;
-    display: block !important;
+    display: flex !important; /* Diventa un contenitore per la card */
+    flex-direction: column !important;
+    float: none !important; /* Rimuove eventuali float che rompono il flex */
 }
 
-/* 4. Sistemazione della Card all'interno */
+/* 4. Sistemazione della Card interna per non farla restringere */
 .site-header-panel-featured-content .card {
+    width: 100% !important;
     background: transparent !important;
     box-shadow: none !important;
     border: none !important;
-    margin: 0 !important;
+    display: block !important;
 }
 
-/* 5. Assicuriamoci che non ci siano "clear: both" o blocchi che interrompono il flex */
-.site-header-panel::before, .site-header-panel::after {
-    display: none !important;
+/* 5. Forza i testi a non andare a capo in modo strano */
+.card-content-description {
+    white-space: normal !important;
+    display: block !important;
 }
 <!-- fine nuovo pezzo per menu heder -->
 
