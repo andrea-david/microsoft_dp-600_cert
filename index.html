@@ -452,59 +452,8 @@
 }
 <!-- fine theme -->
 
-<!-- inizio nuovo pezzo per menu heder -->
-/* --- LAYOUT HEADER IDENTICO ALL'ORIGINALE --- */
 
-/* 1. Usiamo CSS GRID per far collaborare le due parti */
-.site-header-panel:not([hidden]) {
-    display: grid !important;
-    grid-template-columns: 1fr auto !important; /* La sinistra prende tutto lo spazio, la destra solo il necessario */
-    gap: 0 !important;
-    min-width: 850px !important;
-    padding: 0 !important;
-    background-color: #fff !important; /* TUTTO BIANCO */
-    border: 1px solid #e5e5e5 !important;
-}
 
-/* 2. Parte sinistra (Link) */
-.site-header-panel-menu {
-    padding: 24px !important;
-    margin: 0 !important;
-    display: block !important;
-    background-color: #fff !important; /* BIANCO */
-}
-
-/* 3. Parte destra (Promo) */
-.site-header-panel-featured-content {
-    width: 300px !important;
-    background-color: #fff !important; /* CAMBIATO IN BIANCO per uniformità */
-    border-left: 1px solid #e5e5e5 !important; /* LA BARRA VERTICALE */
-    padding: 24px !important;
-    margin: 0 !important;
-    display: block !important;
-}
-
-/* 4. Sistemazione della Card per non avere sfondi grigi */
-.site-header-panel-featured-content .card {
-    background-color: #fff !important;
-    border: none !important;
-    box-shadow: none !important;
-    margin: 0 !important;
-}
-
-/* 5. Pulizia dei testi */
-.card-supertitle {
-    color: #0067b8 !important; /* Il blu per "Free to join" */
-    font-weight: 600 !important;
-}
-
-.card-title {
-    font-size: 18px !important;
-    font-weight: 700 !important;
-    margin: 8px 0 !important;
-    display: block !important;
-}
-<!-- fine nuovo pezzo per menu heder -->
 
 	
 </style>
