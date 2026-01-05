@@ -408,6 +408,39 @@
 }
 
 <!-- fine globo selettore lingua -->
+
+<!-- inizio theme -->
+/* 1. GESTIONE ICONA THEME (FRECCETTA A DESTRA) */
+#theme-selector .docon-chevron-down-light, 
+.theme-selector-button .docon-chevron-down-light {
+    font-size: 0 !important; /* Nasconde il quadratino */
+    display: inline-block !important;
+    width: 8px !important;
+    height: 8px !important;
+    border-right: 2px solid currentColor !important;
+    border-bottom: 2px solid currentColor !important;
+    transform: rotate(45deg) !important; /* Ruota per farla diventare una V */
+    margin-left: 8px !important;
+    vertical-align: middle !important;
+    position: relative !important;
+    top: -2px !important;
+    visibility: visible !important;
+}
+
+/* 2. FORZA IL CURSORE E IL CLIC SUL BOTTONE */
+#theme-selector, .theme-selector-button {
+    cursor: pointer !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    text-decoration: none !important;
+}
+
+/* 3. EFFETTO AL PASSAGGIO DEL MOUSE (OPZIONALE) */
+#theme-selector:hover {
+    opacity: 0.8;
+}
+<!-- fine theme -->
+
 	
 </style>
 	
