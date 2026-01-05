@@ -410,16 +410,28 @@
 <!-- fine globo selettore lingua -->
 
 <!-- inizio theme -->
-/* ICONA SOLE (A SINISTRA) */
-.docon-sun {
+/* FORZA VISIBILITÀ ICONA SOLE */
+.theme-dropdown-trigger .docon-sun {
     font-size: 0 !important;
     display: inline-block !important;
     width: 16px !important;
     height: 16px !important;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='5'/%3E%3Cline x1='12' y1='1' x2='12' y2='3'/%3E%3Cline x1='12' y1='21' x2='12' y2='23'/%3E%3Cline x1='4.22' y1='4.22' x2='5.64' y2='5.64'/%3E%3Cline x1='18.36' y1='18.36' x2='19.78' y2='19.78'/%3E%3Cline x1='1' y1='12' x2='3' y2='12'/%3E%3Cline x1='21' y1='12' x2='23' y2='12'/%3E%3Cline x1='4.22' y1='19.78' x2='5.64' y2='18.36'/%3E%3Cline x1='18.36' y1='5.64' x2='19.78' y2='4.22'/%3E%3C/svg%3E") !important;
-    background-size: contain !important;
-    background-repeat: no-repeat !important;
-    vertical-align: middle !important;
+    position: relative !important;
+    visibility: visible !important;
+    border: 2px solid #666 !important; /* Il corpo del sole */
+    border-radius: 50% !important;
+    box-sizing: border-box !important;
+}
+
+/* Raggi del sole stilizzati */
+.theme-dropdown-trigger .docon-sun::before {
+    content: "" !important;
+    position: absolute !important;
+    top: -4px; left: 5px;
+    width: 2px; height: 20px;
+    background: #666 !important;
+    box-shadow: 0 0 0 0, 8px 8px 0 0 #666, -8px 8px 0 0 #666; /* Simula i raggi */
+    transform: rotate(45deg);
 }
 
 /* FRECCIA A V (A DESTRA) */
