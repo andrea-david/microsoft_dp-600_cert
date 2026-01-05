@@ -410,39 +410,28 @@
 <!-- fine globo selettore lingua -->
 
 <!-- inizio theme -->
-/* SOLE CON CENTRO BIANCO */
+/* SOLUZIONE ATOMICA PER L'ICONA SOLE */
 .theme-dropdown-trigger .docon-sun {
-    font-size: 0 !important; /* Nasconde eventuali testi/quadratini */
+    font-size: 18px !important; /* Qui usiamo la dimensione del font */
+    line-height: 1 !important;
     display: inline-block !important;
-    width: 12px !important;  /* Dimensione del cerchio centrale */
-    height: 12px !important;
-    border: 2px solid #666 !important; /* Bordo del sole */
-    border-radius: 50% !important;
-    background-color: white !important; /* CENTRO BIANCO */
+    width: auto !important;
+    height: auto !important;
+    background: none !important; /* Rimuoviamo ogni immagine di sfondo */
+    visibility: visible !important;
     position: relative !important;
-    vertical-align: middle !important;
-    margin-right: 4px !important;
-    box-sizing: content-box !important;
+    color: #666 !important; /* Colore grigio */
+}
+
+/* Inseriamo il simbolo del sole tramite codice */
+.theme-dropdown-trigger .docon-sun::before {
+    content: "\2600" !important; /* Codice Unicode per il Sole */
+    display: inline-block !important;
+    font-family: Arial, sans-serif !important;
+    font-weight: bold !important;
     visibility: visible !important;
 }
-
-/* RAGGI DEL SOLE (usiamo le linee dell'Unicode sopra/sotto) */
-.theme-dropdown-trigger .docon-sun::before {
-    content: "+" !important; /* Usiamo un semplice + per fare i raggi */
-    position: absolute !important;
-    top: 50% !important;
-    left: 50% !important;
-    transform: translate(-50%, -50%) !important;
-    color: #666 !important;
-    font-size: 22px !important;
-    font-family: Arial !important;
-    font-weight: 100 !important;
-    z-index: -1 !important; /* Lo mette dietro il cerchio bianco */
-}
-
 	
-
-
 	
 /* FRECCIA A V (A DESTRA) */
 .docon-chevron-down-light {
