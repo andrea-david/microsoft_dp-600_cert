@@ -431,7 +431,67 @@
     font-weight: bold !important;
     visibility: visible !important;
 }
-	
+
+/* --- ICONE NEL FOOTER (THEME SELECTOR) --- */
+
+/* 1. RESET TOTALE PER IL BOTTONE THEME */
+/* Questo serve a cancellare qualsiasi quadratino o icona rotta esistente */
+.theme-dropdown-trigger .icon, 
+.theme-dropdown-trigger .docon {
+    font-family: Arial, sans-serif !important; /* Forza un font standard */
+}
+
+/* 2. IL SOLE (A SINISTRA) */
+.theme-dropdown-trigger .docon-sun {
+    font-size: 0 !important; /* Nasconde il quadratino originale */
+    display: inline-block !important;
+    width: 12px !important;
+    height: 12px !important;
+    border: 1.5px solid #666 !important; /* Cerchio grigio */
+    border-radius: 50% !important;
+    background-color: #fff !important; /* Centro bianco */
+    position: relative !important;
+    vertical-align: middle !important;
+    margin-right: 8px !important;
+    visibility: visible !important;
+}
+
+/* Raggi del sole (usiamo un'ombra per farli apparire intorno) */
+.theme-dropdown-trigger .docon-sun::before {
+    content: "" !important;
+    position: absolute !important;
+    top: 50%; left: 50%;
+    width: 2px; height: 18px;
+    background: #666 !important;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 0 0, 0 0 0 0, 8px -8px 0 -8px #666; /* Tecnica pulita per i raggi */
+    z-index: -1;
+}
+
+/* 3. LA V (A DESTRA) */
+/* Usiamo un selettore lunghissimo per essere sicuri di colpire SOLO il footer */
+.theme-dropdown-trigger .expanded-indicator .docon-chevron-down-light {
+    font-size: 0 !important; /* Nasconde il quadratino sovrapposto */
+    display: inline-block !important;
+    width: 6px !important;
+    height: 6px !important;
+    border-right: 1.5px solid #666 !important;
+    border-bottom: 1.5px solid #666 !important;
+    transform: rotate(45deg) !important;
+    margin-left: 5px !important;
+    vertical-align: middle !important;
+    position: relative !important;
+    top: -3px !important;
+    background: none !important; /* Rimuove eventuali residui */
+    visibility: visible !important;
+}
+
+/* 4. PROTEZIONE HEADER */
+/* Questo assicura che le frecce in alto rimangano intatte */
+header .docon-chevron-down-light::before, 
+header .docon-chevron-down-light::after {
+    display: none !important; /* Evita doppie icone nell'header */
+}
 	
 
 
