@@ -453,53 +453,60 @@
 <!-- fine theme -->
 
 <!-- inizio nuovo pezzo per menu heder -->
-/* --- RESET E FORZATURA LAYOUT A DUE COLONNE --- */
+/* --- STRATEGIA DI POSIZIONAMENTO FORZATO (HEADER) --- */
 
-/* 1. Forza il contenitore ad essere un Flexbox orizzontale */
+/* 1. Prepariamo il contenitore principale */
 .site-header-panel:not([hidden]) {
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: nowrap !important; /* Impedisce assolutamente di andare sotto */
-    align-items: stretch !important;
-    min-width: 850px !important; /* Larghezza minima per far stare tutto */
+    display: block !important; /* Torniamo a block per gestire il posizionamento interno */
+    position: relative !important;
+    min-width: 850px !important;
+    min-height: 350px !important; /* Assicura che ci sia spazio in altezza */
     padding: 0 !important;
-    height: auto !important;
+    background-color: #fff !important;
+    border: 1px solid #e5e5e5 !important;
 }
 
-/* 2. Colonna Sinistra (i link) */
+/* 2. Spingiamo la lista dei link a occupare solo la parte sinistra */
 .site-header-panel-menu {
-    flex: 1 1 auto !important;
-    display: block !important; /* La lista interna rimane verticale */
+    margin-right: 320px !important; /* Crea il "buco" a destra per la promo */
     padding: 24px !important;
-    margin: 0 !important;
+    display: block !important;
 }
 
-/* 3. Colonna Destra (La sezione con le tre voci) */
+/* 3. POSIZIONAMENTO "CHIRURGICO" DELLA PARTE DESTRA */
 .site-header-panel-featured-content {
-    flex: 0 0 320px !important; /* Larghezza fissa e bloccata */
+    position: absolute !important;
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
     width: 320px !important;
-    min-width: 320px !important;
     background-color: #f8f8f8 !important; /* Sfondo grigio */
     border-left: 1px solid #e5e5e5 !important; /* LINEA VERTICALE */
     margin: 0 !important;
     padding: 24px !important;
-    display: flex !important; /* Diventa un contenitore per la card */
-    flex-direction: column !important;
-    float: none !important; /* Rimuove eventuali float che rompono il flex */
-}
-
-/* 4. Sistemazione della Card interna per non farla restringere */
-.site-header-panel-featured-content .card {
-    width: 100% !important;
-    background: transparent !important;
-    box-shadow: none !important;
-    border: none !important;
     display: block !important;
+    z-index: 10 !important;
 }
 
-/* 5. Forza i testi a non andare a capo in modo strano */
-.card-content-description {
-    white-space: normal !important;
+/* 4. Sistemazione testi e card per evitare sovrapposizioni */
+.site-header-panel-featured-content .card,
+.site-header-panel-featured-content .card-content {
+    display: block !important;
+    background: transparent !important;
+}
+
+.card-supertitle {
+    color: #0067b8 !important;
+    font-weight: 600 !important;
+    margin-bottom: 5px !important;
+}
+
+.card-title {
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    color: #000 !important;
+    text-decoration: none !important;
+    margin-bottom: 10px !important;
     display: block !important;
 }
 <!-- fine nuovo pezzo per menu heder -->
