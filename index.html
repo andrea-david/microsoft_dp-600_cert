@@ -453,55 +453,47 @@
 <!-- fine theme -->
 
 <!-- inizio nuovo pezzo per menu heder -->
-/* 1. TRASFORMA IL CONTENITORE DEL MENU IN FLEXBOX */
+/* --- CORREZIONE DEFINITIVA HEADER DUE COLONNE --- */
+
+/* 1. Forziamo il contenitore principale a diventare Flex */
 .site-header-panel:not([hidden]) {
     display: flex !important;
-    flex-direction: row !important; /* Mette la lista a sinistra e la card a destra */
-    min-width: 700px !important; /* Spazio sufficiente per entrambe le parti */
-    padding: 0 !important;
-    background-color: #fff !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important; /* Impedisce alle scritte di andare sotto */
     align-items: stretch !important;
+    min-width: 800px !important; /* Aumentiamo un po' la larghezza */
+    padding: 0 !important;
 }
 
-/* 2. COLONNA SINISTRA: La lista dei link */
-.site-header-panel .site-header-panel-menu {
-    flex: 1 !important;
+/* 2. Colonna Sinistra (Menu con i link) */
+.site-header-panel-menu {
+    flex: 1 1 auto !important;
     padding: 24px !important;
-}
-
-/* 3. COLONNA DESTRA: La sezione "Free to join..." */
-.site-header-panel-featured-content {
-    flex: 0 0 280px !important; /* Larghezza fissa per la parte destra */
-    background-color: #f8f8f8 !important; /* Sfondo grigio chiaro */
-    padding: 24px !important;
-    border-left: 1px solid #e5e5e5 !important; /* LA BARRA SEPARATRICE VERTICALE */
-    display: flex !important;
-    flex-direction: column !important;
     margin: 0 !important;
 }
 
-/* 4. PULIZIA DELLA CARD (Rimuove ombre e arrotondamenti se necessario) */
+/* 3. Colonna Destra (Sezione Featured/Promo) */
+.site-header-panel-featured-content {
+    flex: 0 0 300px !important; /* Larghezza fissa per la parte destra */
+    width: 300px !important;
+    background-color: #f8f8f8 !important; /* Sfondo grigio */
+    border-left: 1px solid #e5e5e5 !important; /* LINEA VERTICALE */
+    margin: 0 !important; /* Rimuove margini che potrebbero spingerla sotto */
+    padding: 24px !important;
+    display: block !important;
+}
+
+/* 4. Sistemazione della Card all'interno */
 .site-header-panel-featured-content .card {
     background: transparent !important;
-    border: none !important;
     box-shadow: none !important;
-    padding: 0 !important;
+    border: none !important;
+    margin: 0 !important;
 }
 
-/* 5. STILE TESTI (Per renderli identici all'originale) */
-.card-supertitle {
-    font-weight: 600 !important;
-    color: #0067b8 !important; /* Blu Microsoft */
-    font-size: 13px !important;
-    margin-bottom: 4px !important;
-}
-
-.card-title {
-    font-weight: 700 !important;
-    font-size: 18px !important;
-    display: block !important;
-    margin-bottom: 8px !important;
-    text-decoration: none !important;
+/* 5. Assicuriamoci che non ci siano "clear: both" o blocchi che interrompono il flex */
+.site-header-panel::before, .site-header-panel::after {
+    display: none !important;
 }
 <!-- fine nuovo pezzo per menu heder -->
 
